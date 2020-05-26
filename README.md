@@ -7,6 +7,7 @@ Pandoc filter which converts mermaid code blocks to mermaid images.
 !changed to work on windows and to have a higher default resolution when converting to latex
 
 ````
+
 ```mermaid
 gantt
         dateFormat  YYYY-MM-DD
@@ -28,16 +29,12 @@ gantt
 
 ## Usage
 
-Install it with pip:
+Install it with setup.py:
 
-```
-pip install pandoc-mermaid-filter
-```
+in the current directory
 
-And use it like any other pandoc filter:
-
-```
-pandoc tests/sample.md -o sample.pdf --filter pandoc-mermaid
+```powershell
+python -m pip install .
 ```
 
 The mermaid binary must be in your `$PATH` or can be set with the
@@ -45,6 +42,12 @@ The mermaid binary must be in your `$PATH` or can be set with the
 
 By setting the environment variable `PUPPETEER_CFG`, you can pass a custom
 configuration file to `mermaid` (`-p` option).
+
+To setup the environment variables I would recommend using a python virtual environment. In the environments Scrips/Activation.ps1 add the following line,
+
+```powershell
+$env:MERMAID_BIN = "path to mmdc"
+```
 
 ## But there is ...
 

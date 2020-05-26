@@ -4,6 +4,8 @@ Fork from https://github.com/timofurrer/pandoc-mermaid-filter
 
 Pandoc filter which converts mermaid code blocks to mermaid images.
 
+!changed to work on windows and to have a higher default resolution when converting to latex
+
 ````
 ```mermaid
 gantt

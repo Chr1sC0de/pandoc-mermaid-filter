@@ -14,44 +14,9 @@ if sys.argv[-1] == "publish":
     os.system("python setup.py sdist bdist_wheel upload")
     sys.exit()
 
-
 required = [
     'pandocfilters'
 ]
-
-
-class UploadCommand(Command):
-    """Support setup.py upload."""
-
-    description = 'Build and publish the package.'
-    user_options = []
-
-    @staticmethod
-    def status(s):
-        """Prints things in bold."""
-        print('\033[1m{0}\033[0m'.format(s))
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        try:
-            self.status('Removing previous builds…')
-            rmtree(os.path.join(here, 'dist'))
-        except OSError:
-            pass
-
-        self.status('Building Source and Wheel (universal) distribution…')
-        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
-
-        self.status('Uploading the package to PyPi via Twine…')
-        os.system('twine upload dist/*')
-
-        sys.exit()
-
 
 setup(
     name='pandoc-mermaid-filter',
@@ -60,7 +25,7 @@ setup(
     long_description='Pandoc filter for mermaid code blocks',
     author='Timo Furrer',
     author_email='tuxtimo@gmail.com',
-    url='https://github.com/timofurrer/pandoc-mermaid-filter',
+    url='https://github.com/Chr1sC0de/pandoc-mermaid-filter',
     install_requires=required,
     py_modules=['pandoc_mermaid_filter'],
     entry_points={
@@ -82,7 +47,4 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ),
-    cmdclass={
-        'upload': UploadCommand,
-    },
 )

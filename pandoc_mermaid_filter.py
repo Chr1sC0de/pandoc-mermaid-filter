@@ -30,8 +30,10 @@ def mermaid(key, value, format_, _):
                 with open(src, "wb") as f:
                     f.write(txt)
 
-                # Default command to execute
                 cmd = [MERMAID_BIN, "-i", src, "-o", dest]
+                # Default command to execute
+                if format_ == "latex":
+                    cmd.extend(["H","2000", "w", "4000"])
 
                 if PUPPETEER_CFG is not None:
                     cmd.extend(["-p", PUPPETEER_CFG])
@@ -39,7 +41,7 @@ def mermaid(key, value, format_, _):
                 if os.path.isfile('.puppeteer.json'):
                     cmd.extend(["-p", ".puppeteer.json"])
 
-                subprocess.check_call(cmd)
+                subprocess.check_call(cmd, shell=True)
                 sys.stderr.write('Created image ' + dest + '\n')
 
             return Para([Image([ident, [], keyvals], caption, [dest, typef])])

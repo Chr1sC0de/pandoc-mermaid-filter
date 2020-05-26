@@ -1,5 +1,7 @@
 # pandoc-mermaid-filter
 
+Fork from https://github.com/timofurrer/pandoc-mermaid-filter
+
 Pandoc filter which converts mermaid code blocks to mermaid images.
 
 ````
